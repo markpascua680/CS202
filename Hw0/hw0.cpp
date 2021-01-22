@@ -37,10 +37,12 @@ double c_ctof(const char* str) { // Converts Celsius to Fahrenheit
         std::cout << "The temperature is invalid" << std::endl;
     }
     else { // Converts Fahrenheit to Celsius
-        temp -= 32;
-        temp *= 5;
-        temp /= 9;
-        std::cout << str << " degrees Fahrenheit is " << temp << " degrees Celsius" << std::endl;
+        char* end;
+        temp = std::strtod(str, &end);
+        temp *= 9;
+        temp /= 5;
+        temp += 32;
+        std::cout << str << " degrees Celsius is " << temp << " degrees Fahrenheit" << std::endl;
     }
 
     return temp;

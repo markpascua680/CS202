@@ -17,7 +17,11 @@ int main(int argc, char** argv)
         if (input == "ftoc") { // Convert ftoc if user inputs "ftoc"
             cpp_ftoc(argv[1]);
         }
-
+        else if (input == "ctof") { // Convert ctof if user inputs "ctof"
+            c_ctof(argv[1]);
+        }
+        else 
+            std::cout << "Invalid input" << std::endl; // User inputs incorrectly
     }
     else 
         std::cout << "Invalid input" << std::endl; // User inputs incorrectly
