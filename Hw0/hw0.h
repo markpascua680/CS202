@@ -16,4 +16,6 @@ double cpp_ftoc(const char* str);
 
 double c_ctof(const char* str);
 
+bool isNumber(const char* str);
+
 #endif // !HW0_H

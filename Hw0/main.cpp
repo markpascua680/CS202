@@ -11,7 +11,7 @@ int main(int argc, char** argv)
     std::cout << "Enter the temperature. Then input \"ctof\" to convert from Celsius to Fahrenheit or \"ftoc\" for Fahrenheit to Celsius" << std::endl;
     std::cout << std::endl;
 
-    if (argc > 1) { // Ensure something has been input
+    if (argc > 1 && isNumber(argv[1])) { // Ensure something has been input
         std::string input = argv[2];
 
         if (input == "ftoc") { // Convert ftoc if user inputs "ftoc"
@@ -20,8 +20,6 @@ int main(int argc, char** argv)
         else if (input == "ctof") { // Convert ctof if user inputs "ctof"
             c_ctof(argv[1]);
         }
-        else 
-            std::cout << "Invalid input" << std::endl; // User inputs incorrectly
     }
     else 
         std::cout << "Invalid input" << std::endl; // User inputs incorrectly
