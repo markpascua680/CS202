@@ -16,6 +16,7 @@ double cpp_ftoc(const char* str) { // Converts Fahrenheit to Celsius
         std::cout << "The temperature is invalid" << std::endl;
     }
     else { // Converts Fahrenheit to Celsius
+        temp = std::stod(str);
         temp -= 32;
         temp *= 5;
         temp /= 9;
@@ -26,5 +27,21 @@ double cpp_ftoc(const char* str) { // Converts Fahrenheit to Celsius
 }
 
 double c_ctof(const char* str) { // Converts Celsius to Fahrenheit
-    return 0;
+    double temp;
+
+    std::string num = str;
+    std::istringstream checkIsNum(num); // Check if the input is a number
+    checkIsNum >> temp;
+
+    if (!checkIsNum) {
+        std::cout << "The temperature is invalid" << std::endl;
+    }
+    else { // Converts Fahrenheit to Celsius
+        temp -= 32;
+        temp *= 5;
+        temp /= 9;
+        std::cout << str << " degrees Fahrenheit is " << temp << " degrees Celsius" << std::endl;
+    }
+
+    return temp;
 }
