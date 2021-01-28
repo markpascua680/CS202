@@ -3,7 +3,7 @@
    01/21/21
    Holds conversion functions
 */
-#include "hw0.h"
+#include "Temperature.h"
 
 double cpp_ftoc(const char* str) { // Converts Fahrenheit to Celsius
     

@@ -3,7 +3,7 @@
    01/21/21
    Convert Farhenheit to Celsius
 */
-#include "hw0.h"
+#include "Temperature.h"
 
 int main(int argc, char** argv)
 {

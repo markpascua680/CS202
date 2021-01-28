@@ -4,8 +4,8 @@
    Holds conversion functions
 */
 
-#ifndef HW0_H
-#define HW0_H
+#ifndef TEMPERATURE_H
+#define TEMPERATURE_H
 #include <iostream>
 #include <string>
 #include <stdlib.h>
