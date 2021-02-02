@@ -28,3 +28,13 @@ double StopWatch::getTime() {
     _elapsedTime = _end - _start;
     return _elapsedTime.count();
 }
+
+
+double StopWatch::getSeconds() {
+    return std::chrono::duration_cast<std::chrono::seconds>(_end - _start).count();
+}
+
+
+double StopWatch::getMilliseconds() {
+    return std::chrono::duration_cast<std::chrono::milliseconds>(_end - _start).count();
+}

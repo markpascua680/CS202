@@ -7,6 +7,8 @@
 #define TIME_H
 #include <iostream>
 #include <chrono>
+#include <algorithm>
+#include <random>
 
 class StopWatch
 {
@@ -18,6 +20,8 @@ public:
     void Stop();
 
     double getTime();
+    double getSeconds();
+    double getMilliseconds();
 
 private:
     std::chrono::duration<double> _elapsedTime;
