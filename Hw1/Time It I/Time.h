@@ -5,6 +5,27 @@
 */
 #ifndef TIME_H
 #define TIME_H
+#include <iostream>
+#include <chrono>
+
+class StopWatch
+{
+public:
+	StopWatch();
+	~StopWatch();
+
+    void Restart();
+    void Stop();
+
+    double getStart() {
+        return _startTime;
+    }
+
+private:
+    double _elapsedTime = 0;
+    double _startTime = 0;
+    double _endTime;
+};
 
 // Constructor that starts the clock
 // Function stopwatch(), measures time
