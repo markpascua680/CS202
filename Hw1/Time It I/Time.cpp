@@ -6,10 +6,7 @@
 #include "Time.h"
 
 StopWatch::StopWatch() {
-    std::chrono::time_point < std::chrono::system_clock > start; // Set a time point at the start and end
-    start = std::chrono::system_clock::now();
-    std::chrono::duration<double> startTime;
-    _startTime = startTime.count();
+    _start = std::chrono::system_clock::now();
 }
 
 
@@ -18,13 +15,16 @@ StopWatch::~StopWatch() {
 }
 
 
-// Restart clock
-void StopWatch::Restart() { 
+void StopWatch::Restart() { // Restart clock
 
 }
 
 
-// Stop clock + record time of event
-void StopWatch::Stop() {
+void StopWatch::Stop() { // Stop clock + record time of event
+    _end = std::chrono::system_clock::now();
+}
 
+double StopWatch::getTime() {
+    _elapsedTime = _end - _start;
+    return _elapsedTime.count();
 }

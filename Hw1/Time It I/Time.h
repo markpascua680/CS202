@@ -17,14 +17,11 @@ public:
     void Restart();
     void Stop();
 
-    double getStart() {
-        return _startTime;
-    }
+    double getTime();
 
 private:
-    double _elapsedTime = 0;
-    double _startTime = 0;
-    double _endTime;
+    std::chrono::duration<double> _elapsedTime;
+    std::chrono::time_point < std::chrono::system_clock > _start, _end; // Set a time point for start and end
 };
 
 // Constructor that starts the clock
