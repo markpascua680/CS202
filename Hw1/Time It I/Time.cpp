@@ -22,8 +22,9 @@ void StopWatch::Restart() { // Restart clock
 }
 
 
-void StopWatch::Stop() { // Stop clock + record time of event
+void StopWatch::Stop(StopWatch& timer) { // Stop clock + record time of event
     _end = std::chrono::system_clock::now();
+    timer.printTime(timer);
 }
 
 void StopWatch::printTime(StopWatch& timer) {
@@ -31,6 +32,7 @@ void StopWatch::printTime(StopWatch& timer) {
     std::cout << "Elapsed time: " << _elapsedTime.count() << std::endl;
     std::cout << "Seconds: " << timer.getSeconds() << std::endl;
     std::cout << "Milliseconds: " << timer.getMilliseconds() << std::endl;
+    std::cout << std::endl;
 }
 
 
@@ -66,4 +68,12 @@ std::vector<int> sortVector(std::vector<int>& v) { // Sorts vector in descending
 std::vector<int> reverseVector(std::vector<int>& v) { // Reverse elements in the vector
     std::reverse(v.begin(), v.end());
     return v;
+}
+
+
+std::vector<int>::iterator searchVector(std::vector<int>& v, int& findThis) {
+    std::vector<int> v2(1, findThis);
+    std::vector<int>::iterator it;
+    it = std::search(v.begin(), v.end(), v2.begin(), v2.end());
+    return it;
 }
