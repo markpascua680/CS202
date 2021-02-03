@@ -1,24 +1,23 @@
 /* Jay-Mark Pascua
    CS 202
    01/28/2021
-
+   Record time of different search algorithms on varying vector sizes
 */
 #include "Time.h"
 
-int main() {
-    unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
 
-    std::mt19937 randNum(seed); 
-    std::cout << randNum() << std::endl;
-    /*
+int main() {
+
     StopWatch Timer;
 
-    for (int i = 0; i < 1000; i++) {
-        std::cout << i << std::endl;
-    }
+    std::vector<int> v10 = makeVector(10);
 
+    for (auto x : v10) {
+        std::cout << x << std::endl;
+    }
+ 
     Timer.Stop();
     std::cout << "Elapsed time: " << Timer.getTime() << std::endl; 
     std::cout << "Seconds: " << Timer.getSeconds() << std::endl;
-    std::cout << "Milliseconds: " << Timer.getMilliseconds() << std::endl; */
+    std::cout << "Milliseconds: " << Timer.getMilliseconds() << std::endl; 
 }

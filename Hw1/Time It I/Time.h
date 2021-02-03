@@ -9,6 +9,9 @@
 #include <chrono>
 #include <algorithm>
 #include <random>
+#include <vector>
+
+std::vector<int> makeVector(int n); // Creates a vector with n elements
 
 class StopWatch
 {
@@ -16,8 +19,8 @@ public:
 	StopWatch();
 	~StopWatch();
 
-    void Restart();
-    void Stop();
+    void Restart(); // Restart clock
+    void Stop(); // Stop clock + record time of event
 
     double getTime();
     double getSeconds();
@@ -27,11 +30,5 @@ private:
     std::chrono::duration<double> _elapsedTime;
     std::chrono::time_point < std::chrono::system_clock > _start, _end; // Set a time point for start and end
 };
-
-// Constructor that starts the clock
-// Function stopwatch(), measures time
-// Function Start(), restarts the clock
-// Function Stop(), records the end time for an event
-// Make two other methods that reports time in seconds and milliseconds as a double
 
 #endif // !TIME_H
