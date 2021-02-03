@@ -5,6 +5,8 @@
 */
 #include "Time.h"
 
+int findThis; // Number to find in vector
+
 StopWatch::StopWatch() {
     _start = std::chrono::system_clock::now();
 }
@@ -24,9 +26,11 @@ void StopWatch::Stop() { // Stop clock + record time of event
     _end = std::chrono::system_clock::now();
 }
 
-double StopWatch::getTime() {
+void StopWatch::printTime(StopWatch& timer) {
     _elapsedTime = _end - _start;
-    return _elapsedTime.count();
+    std::cout << "Elapsed time: " << _elapsedTime.count() << std::endl;
+    std::cout << "Seconds: " << timer.getSeconds() << std::endl;
+    std::cout << "Milliseconds: " << timer.getMilliseconds() << std::endl;
 }
 
 
@@ -49,5 +53,17 @@ std::vector<int> makeVector(int n) { // Creates a vector with n elements
     for (int i = 0; i < n; i++) {
         v.push_back(randNum() % 100 + 1); // Vector of size n with random numbers between 1-100
     }
+    return v;
+}
+
+
+std::vector<int> sortVector(std::vector<int>& v) { // Sorts vector in descending order
+    std::sort(v.begin(), v.end(), [](int a, int b) {return a > b;});
+    return v;
+}
+
+
+std::vector<int> reverseVector(std::vector<int>& v) { // Reverse elements in the vector
+    std::reverse(v.begin(), v.end());
     return v;
 }

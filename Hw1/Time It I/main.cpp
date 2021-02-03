@@ -8,16 +8,10 @@
 
 int main() {
 
-    StopWatch Timer;
-
-    std::vector<int> v10 = makeVector(10);
-
-    for (auto x : v10) {
-        std::cout << x << std::endl;
+    for (int i = 10; i <= 10000000; i *= 10) { // Creates vectors with i elements, up to 10M
+        std::vector<int> v = makeVector(i);
+        sortVector(v);
     }
- 
-    Timer.Stop();
-    std::cout << "Elapsed time: " << Timer.getTime() << std::endl; 
-    std::cout << "Seconds: " << Timer.getSeconds() << std::endl;
-    std::cout << "Milliseconds: " << Timer.getMilliseconds() << std::endl; 
+
+
 }

@@ -12,6 +12,8 @@
 #include <vector>
 
 std::vector<int> makeVector(int n); // Creates a vector with n elements
+std::vector<int> sortVector(std::vector<int>& v); // Sorts vector in descending order
+std::vector<int> reverseVector(std::vector<int>& v); // Reverse elements in the vector
 
 class StopWatch
 {
@@ -22,7 +24,7 @@ public:
     void Restart(); // Restart clock
     void Stop(); // Stop clock + record time of event
 
-    double getTime();
+    void printTime(StopWatch& timer);
     double getSeconds();
     double getMilliseconds();
 
