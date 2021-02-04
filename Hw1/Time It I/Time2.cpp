@@ -48,7 +48,7 @@ void vectorFind(std::vector<std::string>& v) { // Find random number in vector
         std::cout << "Word not found" << std::endl;
 }
 
-void sortStringVector(std::vector<std::string>& v) { // Sorts vector 
+void sortStringVector(std::vector<std::string>& v) { // Sorts vector Alphabetically
     StopWatch Timer;
     
     std::cout << "SORTING VECTOR" << std::endl;
@@ -78,7 +78,7 @@ void timeVector(std::ifstream& book) { // Read file's words into vector of strin
     sortStringVector(v);
 }
 
-void listSort(std::list<std::string> list) {
+void listSort(std::list<std::string>& list) { // Sorts list Alphabetically
     StopWatch Timer;
 
     std::cout << "SORTING LIST" << std::endl;
@@ -87,7 +87,7 @@ void listSort(std::list<std::string> list) {
     Timer.Stop(Timer);
 }
 
-void listFind(std::list<std::string>& list, std::string findWord) {
+void listFind(std::list<std::string>& list, std::string findWord) { // Finds random word in list
     StopWatch Timer;
 
     std::cout << "FINDING: " << findWord << std::endl;
@@ -102,7 +102,7 @@ void listFind(std::list<std::string>& list, std::string findWord) {
 
 }
 
-void timeList(std::ifstream& book, std::string findWord) {
+void timeList(std::ifstream& book, std::string findWord) { // Times operations on list
     StopWatch Timer;
     std::list<std::string> list;
     std::string word;
@@ -149,7 +149,7 @@ void gutenbergProject() {
     book.open("Book5.txt");
     timeVector(book);
 
-
+    ////////////////////////////////////////////////////////////////////
     std::list<std::string> list;
     std::cout << "////////////READING INTO LIST////////////" << std::endl;
 
@@ -172,4 +172,6 @@ void gutenbergProject() {
     std::cout << "\n////////////BOOK 5////////////" << std::endl;
     book.open("Book5.txt");
     timeList(book, randomWord());
+
+
 }
