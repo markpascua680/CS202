@@ -141,6 +141,7 @@
     <ClInclude Include="Time.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Time2.cpp" />
     <ClCompile Include="Time.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>

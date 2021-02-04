@@ -16,13 +16,15 @@ std::vector<int> sortVector(std::vector<int>& v); // Sorts vector in descending 
 std::vector<int> reverseVector(std::vector<int>& v); // Reverse elements in the vector
 std::vector<int>::iterator searchVector(std::vector<int>& v, int& findThis); // Searches vector for an element
 
+void gutenbergProject();
+
 class StopWatch
 {
 public:
 	StopWatch();
 	~StopWatch();
 
-    void Restart(); // Restart clock
+    void Start(); // Start clock
     void Stop(StopWatch& timer); // Stop clock + record time of event
 
     void printTime(StopWatch& timer);

@@ -9,6 +9,8 @@ int findThis; // Number to find in vector
 
 StopWatch::StopWatch() {
     _start = std::chrono::system_clock::now();
+    _end = std::chrono::system_clock::now();
+    _elapsedTime = _end - _start;
 }
 
 
@@ -17,7 +19,7 @@ StopWatch::~StopWatch() {
 }
 
 
-void StopWatch::Restart() { // Restart clock
+void StopWatch::Start() { // Restart clock
     _start = std::chrono::system_clock::now();
 }
 

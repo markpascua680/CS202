@@ -8,6 +8,7 @@
 
 int main() {
     StopWatch Timer;
+    /*
     for (int i = 10; i <= 10000000; i *= 10) { // Creates vectors with i elements, up to 10M
         std::cout << "VECTOR WITH " << i << " ELEMENTS" << std::endl;
         std::vector<int> v = makeVector(i);
@@ -16,19 +17,19 @@ int main() {
 
         //////////////////////////////////////////////////
         std::cout << "Sorting" << std::endl;
-        Timer.Restart();
+        Timer.Start();
         sortVector(v);
         Timer.Stop(Timer);
 
         //////////////////////////////////////////////////
         std::cout << "Reversing" << std::endl;
-        Timer.Restart();
+        Timer.Start();
         reverseVector(v);
         Timer.Stop(Timer); 
 
         //////////////////////////////////////////////////
-        std::cout << "Searching" << std::endl;
-        Timer.Restart();
+        std::cout << "Searching for " << findThis << std::endl;
+        Timer.Start();
         std::vector<int>::iterator it = searchVector(v, findThis);
         Timer.Stop(Timer);
 
@@ -40,17 +41,23 @@ int main() {
 
         std::cout  << std::endl;
         //////////////////////////////////////////////////
-        std::cout << "Binary Searching" << std::endl;
-        Timer.Restart();
+        std::cout << "Binary Searching for " << findThis << std::endl;
+        Timer.Start();
         std::binary_search(v.begin(), v.end(), findThis);
         Timer.Stop(Timer);
         if (std::binary_search(v.begin(), v.end(), findThis))
-            std::cout << findThis << " exists in this vector" << std::endl;
+            std::cout << findThis << " found in this vector" << std::endl;
         else 
             std::cout << "Element not found" << std::endl;
 
         std::cout << std::endl;
         system("PAUSE");
-    }
+    
+
+
+    }*/
+
+    // Starts Time It II Program
+    gutenbergProject();
 
 }
