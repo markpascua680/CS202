@@ -78,8 +78,27 @@ void timeVector(std::ifstream& book) { // Read file's words into vector of strin
     sortStringVector(v);
 }
 
-void listFind(std::list<std::string>& list) {
+void listSort(std::list<std::string> list) {
+    StopWatch Timer;
 
+    std::cout << "SORTING LIST" << std::endl;
+    Timer.Start();
+    list.sort([](std::string a, std::string b) {return a > b;});
+    Timer.Stop(Timer);
+}
+
+void listFind(std::list<std::string>& list, std::string findWord) {
+    StopWatch Timer;
+
+    std::cout << "FINDING: " << findWord << std::endl;
+    Timer.Start();
+    std::list<std::string>::iterator it = std::find(list.begin(), list.end(), findWord);
+    if (it != list.end()) {
+        std::cout << "Found " << findWord << std::endl;
+        Timer.Stop(Timer);
+    }
+    else
+        std::cout << "Word not found" << std::endl;
 
 }
 
@@ -98,8 +117,9 @@ void timeList(std::ifstream& book, std::string findWord) {
             book.close();
             break;
         }
-
     }
+    listFind(list, findWord);
+    listSort(list);
 }
 
 void gutenbergProject() {
