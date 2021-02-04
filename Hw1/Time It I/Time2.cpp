@@ -5,36 +5,37 @@
 */
 
 #include <fstream>
+#include <list>
 #include "Time.h"
 
-std::vector<std::string> bookMakeVector(std::ifstream& book) { // Read file's words into vector of strings
-    StopWatch Timer;
+std::string randomWord() { // Returns a random word to find in book
+    unsigned seed = std::chrono::system_clock::now().time_since_epoch().count(); // Random number generator
+    std::mt19937 randNum(seed);
+
+    std::ifstream dictionary;
+    dictionary.open("Dictionary.txt");
+
     std::vector<std::string> v;
-    std::string word;
+    std::string words; // Dictionary words
+    
+    while (true) {
+        dictionary >> words;
+        v.push_back(words);
 
-    Timer.Start();
-    while (true) { 
-        book >> word;
-        v.push_back(word);
-
-        if (book.eof()) {
-            Timer.Stop(Timer);
-            book.close();
+        if (dictionary.eof()) {
             break;
         }
-
     }
-    return v;
+
+    int rNum = randNum() % v.size() + 1;
+    std::string wordToFind = v[rNum];
+    return wordToFind;
 }
 
 void vectorFind(std::vector<std::string>& v) { // Find random number in vector
     StopWatch Timer;
-
-    unsigned seed = std::chrono::system_clock::now().time_since_epoch().count(); // Random number generator
-    std::mt19937 randNum(seed);
-    int rNum = randNum() % v.size() + 1;
-
-    std::string findWord = v[rNum];
+    
+    std::string findWord = randomWord();
 
     std::cout << "FINDING: " << findWord << std::endl;
     Timer.Start();
@@ -56,6 +57,51 @@ void sortStringVector(std::vector<std::string>& v) { // Sorts vector
     Timer.Stop(Timer);
 }
 
+void timeVector(std::ifstream& book) { // Read file's words into vector of strings
+    StopWatch Timer;
+    std::vector<std::string> v;
+    std::string word;
+
+    Timer.Start();
+    while (true) {
+        book >> word;
+        v.push_back(word);
+
+        if (book.eof()) {
+            Timer.Stop(Timer);
+            book.close();
+            break;
+        }
+
+    }
+    vectorFind(v);
+    sortStringVector(v);
+}
+
+void listFind(std::list<std::string>& list) {
+
+
+}
+
+void timeList(std::ifstream& book, std::string findWord) {
+    StopWatch Timer;
+    std::list<std::string> list;
+    std::string word;
+
+    Timer.Start();
+    while (true) {
+        book >> word;
+        list.push_back(word);
+
+        if (book.eof()) {
+            Timer.Stop(Timer);
+            book.close();
+            break;
+        }
+
+    }
+}
+
 void gutenbergProject() {
     std::ifstream book;
     std::vector<std::string> v;
@@ -64,32 +110,46 @@ void gutenbergProject() {
 
     std::cout << "\n////////////BOOK 1////////////" << std::endl;
     book.open("Book1.txt");
-    v = bookMakeVector(book);
-    vectorFind(v);
-    sortStringVector(v);
+    timeVector(book);
+    
 
     std::cout << "\n////////////BOOK 2////////////" << std::endl;
     book.open("Book2.txt");
-    v = bookMakeVector(book);
-    vectorFind(v);
-    sortStringVector(v);
+    timeVector(book);
 
     std::cout << "\n////////////BOOK 3////////////" << std::endl;
     book.open("Book3.txt");
-    v = bookMakeVector(book);
-    vectorFind(v);
-    sortStringVector(v);
+    timeVector(book);
 
     std::cout << "\n////////////BOOK 4////////////" << std::endl;
     book.open("Book4.txt");
-    v = bookMakeVector(book);
-    vectorFind(v);
-    sortStringVector(v);
+    timeVector(book);
 
     std::cout << "\n////////////BOOK 5////////////" << std::endl;
     book.open("Book5.txt");
-    v = bookMakeVector(book);
-    vectorFind(v);
-    sortStringVector(v);
+    timeVector(book);
 
+
+    std::list<std::string> list;
+    std::cout << "////////////READING INTO LIST////////////" << std::endl;
+
+    std::cout << "\n////////////BOOK 1////////////" << std::endl;
+    book.open("Book1.txt");
+    timeList(book, randomWord());
+
+    std::cout << "\n////////////BOOK 2////////////" << std::endl;
+    book.open("Book2.txt");
+    timeList(book, randomWord());
+
+    std::cout << "\n////////////BOOK 3////////////" << std::endl;
+    book.open("Book3.txt");
+    timeList(book, randomWord());
+
+    std::cout << "\n////////////BOOK 4////////////" << std::endl;
+    book.open("Book4.txt");
+    timeList(book, randomWord());
+
+    std::cout << "\n////////////BOOK 5////////////" << std::endl;
+    book.open("Book5.txt");
+    timeList(book, randomWord());
 }

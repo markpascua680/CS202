@@ -1,7 +1,7 @@
 /* Jay-Mark Pascua
    CS 202
    01/28/2021
-   Record time of different search algorithms on varying vector sizes
+   Record time of different search algorithms on varying vector sizes 6 HOURS
 */
 #include "Time.h"
 
