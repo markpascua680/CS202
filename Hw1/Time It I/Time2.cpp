@@ -40,42 +40,56 @@ void vectorFind(std::vector<std::string>& v) { // Find random number in vector
     Timer.Start();
     std::vector<std::string>::iterator it = std::find(v.begin(), v.end(), findWord);
     if (it != v.end()) {
-        std::cout << findWord << " found" << std::endl;
+        std::cout << "Found " << findWord << std::endl;
         Timer.Stop(Timer);
     }
     else
         std::cout << "Word not found" << std::endl;
 }
 
+void sortStringVector(std::vector<std::string>& v) { // Sorts vector 
+    StopWatch Timer;
+    
+    std::cout << "SORTING VECTOR" << std::endl;
+    Timer.Start();
+    std::sort(v.begin(), v.end(), [](std::string a, std::string b) {return a > b;});
+    Timer.Stop(Timer);
+}
+
 void gutenbergProject() {
     std::ifstream book;
     std::vector<std::string> v;
 
-    std::cout << "READING INTO VECTOR" << std::endl;
+    std::cout << "////////////READING INTO VECTOR////////////" << std::endl;
 
-    std::cout << "\nBOOK 1" << std::endl;
+    std::cout << "\n////////////BOOK 1////////////" << std::endl;
     book.open("Book1.txt");
     v = bookMakeVector(book);
     vectorFind(v);
+    sortStringVector(v);
 
-    std::cout << "\nBOOK 2" << std::endl;
+    std::cout << "\n////////////BOOK 2////////////" << std::endl;
     book.open("Book2.txt");
     v = bookMakeVector(book);
     vectorFind(v);
+    sortStringVector(v);
 
-    std::cout << "\nBOOK 3" << std::endl;
+    std::cout << "\n////////////BOOK 3////////////" << std::endl;
     book.open("Book3.txt");
     v = bookMakeVector(book);
     vectorFind(v);
+    sortStringVector(v);
 
-    std::cout << "\nBOOK 4" << std::endl;
+    std::cout << "\n////////////BOOK 4////////////" << std::endl;
     book.open("Book4.txt");
     v = bookMakeVector(book);
     vectorFind(v);
+    sortStringVector(v);
 
-    std::cout << "\nBOOK 5" << std::endl;
+    std::cout << "\n////////////BOOK 5////////////" << std::endl;
     book.open("Book5.txt");
     v = bookMakeVector(book);
     vectorFind(v);
+    sortStringVector(v);
 
 }
