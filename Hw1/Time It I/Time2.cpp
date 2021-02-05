@@ -39,14 +39,14 @@ void vectorFind(std::vector<std::string>& v) { // Find random number in vector
     std::string findWord = randomWord();
 
     std::cout << "FINDING: " << findWord << std::endl;
+
     Timer.Start();
     std::vector<std::string>::iterator it = std::find(v.begin(), v.end(), findWord);
+    Timer.Stop(Timer);
     if (it != v.end()) {
         std::cout << "Found " << findWord << std::endl;
-        Timer.Stop(Timer);
     }
     else {
-        Timer.Stop(Timer);
         std::cout << "Word not found" << std::endl;
     }
 }
@@ -54,7 +54,7 @@ void vectorFind(std::vector<std::string>& v) { // Find random number in vector
 void sortStringVector(std::vector<std::string>& v) { // Sorts vector Alphabetically
     StopWatch Timer;
     
-    std::cout << "SORTING VECTOR" << std::endl;
+    std::cout << "\nSORTING VECTOR" << std::endl;
     Timer.Start();
     std::sort(v.begin(), v.end(), [](std::string a, std::string b) {return a > b;});
     Timer.Stop(Timer);
@@ -106,7 +106,7 @@ void readIntoVector(std::ifstream& book) { // Reads words from book into vector
 void listSort(std::list<std::string>& list) { // Sorts list Alphabetically
     StopWatch Timer;
 
-    std::cout << "SORTING LIST" << std::endl;
+    std::cout << "\nSORTING LIST" << std::endl;
     Timer.Start();
     list.sort([](std::string a, std::string b) {return a > b;});
     Timer.Stop(Timer);
@@ -116,14 +116,14 @@ void listFind(std::list<std::string>& list, std::string findWord) { // Finds ran
     StopWatch Timer;
 
     std::cout << "FINDING: " << findWord << std::endl;
+
     Timer.Start();
     std::list<std::string>::iterator it = std::find(list.begin(), list.end(), findWord);
+    Timer.Stop(Timer);
     if (it != list.end()) {
         std::cout << "Found " << findWord << std::endl;
-        Timer.Stop(Timer);
     }
     else {
-        Timer.Stop(Timer);
         std::cout << "Word not found" << std::endl;
     }
 
@@ -172,6 +172,32 @@ void readIntoList(std::ifstream& book) { // Reads words from book into list
 
 
 
+void dequeSort(std::deque<std::string>& deq, std::string findWord) {
+    StopWatch Timer;
+
+    std::cout << "\nSORTING DEQUE" << std::endl;
+    Timer.Start();
+    std::sort(deq.begin(), deq.end(), [](std::string a, std::string b) {return a > b;});
+    Timer.Stop(Timer);
+}
+
+void dequeFind(std::deque<std::string>& deq, std::string findWord) {
+    StopWatch Timer;
+
+    std::cout << "FINDING: " << findWord << std::endl;
+
+    Timer.Start();
+    std::deque<std::string>::iterator it = std::find(deq.begin(), deq.end(), findWord);
+    Timer.Stop(Timer);
+
+    if (it != deq.end()) {
+        std::cout << "Found " << findWord << std::endl;
+    }
+    else {
+        std::cout << "Word not found" << std::endl;
+    }
+}
+
 void timeDeque(std::ifstream& book, std::string findWord) { // Time operations on deque
     StopWatch Timer;
     std::deque<std::string> deq;
@@ -185,10 +211,9 @@ void timeDeque(std::ifstream& book, std::string findWord) { // Time operations o
     Timer.Stop(Timer);
     book.close();
 
-
+    dequeFind(deq, findWord);
+    dequeSort(deq, findWord);
 }
-
-
 
 void readIntoDeque(std::ifstream& book) {
     std::cout << "////////////READING INTO DEQUE////////////" << std::endl;
@@ -219,9 +244,9 @@ void readIntoDeque(std::ifstream& book) {
 void gutenbergProject() {
     std::ifstream book;
 
-//    readIntoVector(book);
+    readIntoVector(book);
 
-//    readIntoList(book);
+    readIntoList(book);
 
     readIntoDeque(book);
 }
