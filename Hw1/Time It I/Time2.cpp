@@ -6,6 +6,7 @@
 
 #include <fstream>
 #include <list>
+#include <deque>
 #include "Time.h"
 
 std::string randomWord() { // Returns a random word to find in book
@@ -44,8 +45,10 @@ void vectorFind(std::vector<std::string>& v) { // Find random number in vector
         std::cout << "Found " << findWord << std::endl;
         Timer.Stop(Timer);
     }
-    else
+    else {
+        Timer.Stop(Timer);
         std::cout << "Word not found" << std::endl;
+    }
 }
 
 void sortStringVector(std::vector<std::string>& v) { // Sorts vector Alphabetically
@@ -63,20 +66,42 @@ void timeVector(std::ifstream& book) { // Read file's words into vector of strin
     std::string word;
 
     Timer.Start();
-    while (true) {
+    while (book >> word) {
         book >> word;
         v.push_back(word);
-
-        if (book.eof()) {
-            Timer.Stop(Timer);
-            book.close();
-            break;
-        }
-
     }
+    Timer.Stop(Timer);
+    book.close();
+
     vectorFind(v);
     sortStringVector(v);
 }
+
+void readIntoVector(std::ifstream& book) { // Reads words from book into vector
+    std::cout << "////////////READING INTO VECTOR////////////" << std::endl;
+
+    std::cout << "\n////////////BOOK 1////////////" << std::endl;
+    book.open("Book1.txt");
+    timeVector(book);
+
+    std::cout << "\n////////////BOOK 2////////////" << std::endl;
+    book.open("Book2.txt");
+    timeVector(book);
+
+    std::cout << "\n////////////BOOK 3////////////" << std::endl;
+    book.open("Book3.txt");
+    timeVector(book);
+
+    std::cout << "\n////////////BOOK 4////////////" << std::endl;
+    book.open("Book4.txt");
+    timeVector(book);
+
+    std::cout << "\n////////////BOOK 5////////////" << std::endl;
+    book.open("Book5.txt");
+    timeVector(book);
+}
+
+
 
 void listSort(std::list<std::string>& list) { // Sorts list Alphabetically
     StopWatch Timer;
@@ -97,8 +122,10 @@ void listFind(std::list<std::string>& list, std::string findWord) { // Finds ran
         std::cout << "Found " << findWord << std::endl;
         Timer.Stop(Timer);
     }
-    else
+    else {
+        Timer.Stop(Timer);
         std::cout << "Word not found" << std::endl;
+    }
 
 }
 
@@ -108,49 +135,18 @@ void timeList(std::ifstream& book, std::string findWord) { // Times operations o
     std::string word;
 
     Timer.Start();
-    while (true) {
+    while (book >> word) {
         book >> word;
         list.push_back(word);
-
-        if (book.eof()) {
-            Timer.Stop(Timer);
-            book.close();
-            break;
-        }
     }
+    Timer.Stop(Timer);
+    book.close();
+
     listFind(list, findWord);
     listSort(list);
 }
 
-void gutenbergProject() {
-    std::ifstream book;
-    std::vector<std::string> v;
-
-    std::cout << "////////////READING INTO VECTOR////////////" << std::endl;
-
-    std::cout << "\n////////////BOOK 1////////////" << std::endl;
-    book.open("Book1.txt");
-    timeVector(book);
-    
-
-    std::cout << "\n////////////BOOK 2////////////" << std::endl;
-    book.open("Book2.txt");
-    timeVector(book);
-
-    std::cout << "\n////////////BOOK 3////////////" << std::endl;
-    book.open("Book3.txt");
-    timeVector(book);
-
-    std::cout << "\n////////////BOOK 4////////////" << std::endl;
-    book.open("Book4.txt");
-    timeVector(book);
-
-    std::cout << "\n////////////BOOK 5////////////" << std::endl;
-    book.open("Book5.txt");
-    timeVector(book);
-
-    ////////////////////////////////////////////////////////////////////
-    std::list<std::string> list;
+void readIntoList(std::ifstream& book) { // Reads words from book into list
     std::cout << "////////////READING INTO LIST////////////" << std::endl;
 
     std::cout << "\n////////////BOOK 1////////////" << std::endl;
@@ -172,6 +168,60 @@ void gutenbergProject() {
     std::cout << "\n////////////BOOK 5////////////" << std::endl;
     book.open("Book5.txt");
     timeList(book, randomWord());
+}
 
 
+
+void timeDeque(std::ifstream& book, std::string findWord) { // Time operations on deque
+    StopWatch Timer;
+    std::deque<std::string> deq;
+    std::string word;
+
+    Timer.Start();
+    while (book >> word) {
+        book >> word;
+        deq.push_back(word);
+    }
+    Timer.Stop(Timer);
+    book.close();
+
+
+}
+
+
+
+void readIntoDeque(std::ifstream& book) {
+    std::cout << "////////////READING INTO DEQUE////////////" << std::endl;
+
+    std::cout << "\n////////////BOOK 1////////////" << std::endl;
+    book.open("Book1.txt");
+    timeDeque(book, randomWord());
+
+    std::cout << "\n////////////BOOK 2////////////" << std::endl;
+    book.open("Book2.txt");
+    timeDeque(book, randomWord());
+
+    std::cout << "\n////////////BOOK 3////////////" << std::endl;
+    book.open("Book3.txt");
+    timeDeque(book, randomWord());
+
+    std::cout << "\n////////////BOOK 4////////////" << std::endl;
+    book.open("Book4.txt");
+    timeDeque(book, randomWord());
+
+    std::cout << "\n////////////BOOK 5////////////" << std::endl;
+    book.open("Book5.txt");
+    timeDeque(book, randomWord());
+}
+
+
+
+void gutenbergProject() {
+    std::ifstream book;
+
+//    readIntoVector(book);
+
+//    readIntoList(book);
+
+    readIntoDeque(book);
 }
