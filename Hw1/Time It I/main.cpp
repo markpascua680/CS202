@@ -8,7 +8,7 @@
 
 int main() {
     StopWatch Timer;
-    /*
+
     for (int i = 10; i <= 10000000; i *= 10) { // Creates vectors with i elements, up to 10M
         std::cout << "VECTOR WITH " << i << " ELEMENTS" << std::endl;
         std::vector<int> v = makeVector(i);
@@ -55,9 +55,11 @@ int main() {
     
 
 
-    }*/
+    }
 
     // Starts Time It II Program
+    std::cout << "////////////////TIME IT II PROGRAM////////////////" << std::endl;
+    system("PAUSE");
     gutenbergProject(); // Located in Time2.cpp
 
 }
