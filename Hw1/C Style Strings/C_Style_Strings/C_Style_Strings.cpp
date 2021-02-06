@@ -6,26 +6,23 @@
 #include <iostream>
 
 char* strd(const char* s) { // copies a C-style string into memory it allocates dynamically(using new)
-    char* copy = new char[10];
-    for (int i = 0; i < 10; i++) {
-        copy[i] = s[i];
-    }
+    char* copy = new char;
 
-    std::cout << "Copied c style string to memory at: " << &copy << std::endl;
+    copy = (char*)s;
 
-    char* letter = copy;
+    std::cout << "Copied c style string to memory address: " << &copy << std::endl;
 
-    return letter;
+    return copy;
 }
 
 char* findx(const char* s, const char* x) { // finds the first occurrence of the C - style string s in x
-    for (int i = 0; i < 50; i++) {
-        if (*s == x[i]) {
-            std::cout << "Found \"" << s << "\" at position " << i << std::endl;
-            char* ptr = (char*)i;
-            std::cout << ptr;
-            return ptr;
+    int i = 0;
+    while (true) {
+        if (s == x + i) {
+            std::cout << "\"" << s << "\" found at " << x+i << std::endl;
+            break;
         }
+        i++;
     }
 
     return 0;
@@ -37,6 +34,8 @@ int main() {
     
     std::cout << "Passing " << s << " to strd function" << std::endl;
     std::cout << "strd function returns " << *strd(s) << std::endl; // Points to the 1st letter of the word
+
+    std::cout << "Finding \"" << s << "\" in \"" << x << "\"" << std::endl;
     findx(s, x);
 
     return 0;
