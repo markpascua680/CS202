@@ -19,7 +19,7 @@ char* findx(const char* s, const char* x) { // finds the first occurrence of the
     int i = 0;
     while (true) {
         if (s == x + i) {
-            std::cout << "\"" << s << "\" found at " << x+i << std::endl;
+            std::cout << "\"" << s << "\" found at " << (x+i)<< std::endl;
             break;
         }
         i++;
