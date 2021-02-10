@@ -10,7 +10,15 @@
 #include <list>
 #include "catch.h"
 
-
+struct Champion
+{
+    std::string name;
+    std::string type;
+    std::string role;
+    int baseHealth;
+    int baseAttack;
+    int baseArmor;
+};
 
 /* Queue: First-in First-out
 o Push a value to the back of the list
