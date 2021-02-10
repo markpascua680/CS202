@@ -138,6 +138,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="catch.h" />
     <ClInclude Include="Linked_List.h" />
   </ItemGroup>
   <ItemGroup>
