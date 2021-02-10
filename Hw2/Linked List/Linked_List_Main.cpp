@@ -25,8 +25,14 @@ TEST_CASE("Initialize champions") { // Initializes Characters
 
 TEST_CASE("Add to queue") { // Add a character to back of list
     addQueue(team, LeeSin);
-    CHECK(team.size() != 0); // Ensure list size is increasing as characters are added
+    CHECK(team.size() != team.size() - 1); // Ensure list size is increasing as characters are added
 
     addQueue(team, Kindred);
-    CHECK(team.size() != 1);
+    CHECK(team.size() != team.size() - 1);
 }
+
+TEST_CASE("Delete from queue") { // Delete character from back of list
+    delQueue(team);
+    CHECK(team.size() != team.size() + 1); // Ensure list size decreases by 1 (size should be 2 at this point)
+}
+

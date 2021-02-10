@@ -30,7 +30,7 @@ o Pop a value from the front of the list
 */
 void addQueue(std::list<Champion>& team, Champion& c); // Add a champion to the back of list
 
-void delQueue();
+void delQueue(std::list<Champion>& team);
 /*
 • Stack: Last-in First Out
 o Push a value to the back of the list

@@ -9,6 +9,6 @@ void addQueue(std::list<Champion>& team, Champion& c) {
     team.push_back(c);
 }
 
-void delQueue() {
-
+void delQueue(std::list<Champion>& team) {
+    team.pop_front();
 }
