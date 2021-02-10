@@ -31,7 +31,7 @@ TEST_CASE("Add to queue") { // Add a character to back of list
     CHECK(team.size() != team.size() - 1);
 }
 
-TEST_CASE("Delete from queue") { // Delete character from back of list
+TEST_CASE("Delete from queue") { // Delete character from front of list
     team.pop_front();
     CHECK(team.size() != team.size() + 1); // Ensure list size decreases by 1 (size should be 2 at this point)
 
@@ -40,6 +40,19 @@ TEST_CASE("Delete from queue") { // Delete character from back of list
     CHECK(it->name != LeeSin.name); // Ensure Lee Sin is deleted from the team
 }
 
-TEST_CASE("Add to stack") { // Add a character to back of list
+std::list<Champion> team2;
 
+TEST_CASE("Add to stack") { // Add a character to back of list
+    team2.push_back(Azir);
+    CHECK(team2.size() != team2.size() - 1); // Ensure list size is increasing as characters are added
+
+    team2.push_back(Pyke);
+    CHECK(team2.size() != team2.size() - 1);
+}
+
+TEST_CASE("Delete from stack") { // Delete character from back of list
+    team2.pop_back();
+    CHECK(team2.size() != team2.size() + 1); // Ensure list size decreases by 1 (size should be 2 at this point)
+
+    CHECK(team2.back().name != Pyke.name); // Ensure Pyke is deleted from the team
 }
