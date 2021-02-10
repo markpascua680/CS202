@@ -4,6 +4,7 @@
    Test a queue, stack, insertion, and search in a linked list
 */
 #define CATCH_CONFIG_MAIN
+#include <algorithm>
 #include "Linked_List.h"
 
 std::list<Champion> team;
@@ -55,4 +56,30 @@ TEST_CASE("Delete from stack") { // Delete character from back of list
     CHECK(team2.size() != team2.size() + 1); // Ensure list size decreases by 1 (size should be 2 at this point)
 
     CHECK(team2.back().name != Pyke.name); // Ensure Pyke is deleted from the team
+}
+
+std::list<Champion> team3;
+
+TEST_CASE("Insert and find") { // Insert a character, and search for a character
+    team3.push_back(Pyke);
+    team3.push_back(Kindred);
+    team3.push_back(Azir);
+    team3.push_back(Riven);
+
+    team3.sort([](Champion& a, Champion& b) {return a.name > b.name;});
+
+    // Find Kindred character in list
+    std::list<Champion>::iterator it = std::find_if(team3.begin(), team3.end(), [](const Champion& character) {return character.name == "Kindred";});
+
+    CHECK(it->name == "Kindred"); // Check if the character was found
+
+    team3.insert(it, LeeSin);
+
+    // Find Lee Sin to confirm insertion
+    std::list<Champion>::iterator it2 = std::find_if(team3.begin(), team3.end(), [](const Champion& character) {return character.name == "Lee Sin";});
+    CHECK(it2 != team3.end()); // 
+
+    for (auto x : team3) {
+        std::cout << x.name << std::endl;
+    }
 }

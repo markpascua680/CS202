@@ -23,19 +23,5 @@ struct Champion
 
     }
 };
-/*
-• Stack: Last-in First Out
-o Push a value to the back of the list
-o Pop a value from the back of the list
-*/
-/*
-• Insert and Find
-o For this portion, keep your list in sorted order (using some field of Value)
-o Search for a value in the list
-o Insert a value at the appropriate place in the list
-*/
-/*
-• Print the list out
-*/
 
 #endif // !LINKED_LIST_H
