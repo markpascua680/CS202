@@ -8,33 +8,14 @@
 #define LINKED_LIST_H
 #include <iostream>
 #include <list>
+#include "catch.h"
 
-typedef struct Integers
-{   
-    int num;
-    Integers* next;
 
-    Integers(int n) {
-        num = n;
-        next = NULL;
-    }
-
-}* intPtr;
 
 /* Queue: First-in First-out
 o Push a value to the back of the list
 o Pop a value from the front of the list
 */
-struct Queue
-{
-    Integers* front, * back = NULL;
-
-    void addQueue(int num); // Add to queue to back of the list
-
-    void delQueue();
-};
-
-void printQueue(Queue q); // Prints queue list
 
 /*
 • Stack: Last-in First Out
