@@ -24,15 +24,22 @@ TEST_CASE("Initialize champions") { // Initializes Characters
 }
 
 TEST_CASE("Add to queue") { // Add a character to back of list
-    addQueue(team, LeeSin);
+    team.push_back(LeeSin);
     CHECK(team.size() != team.size() - 1); // Ensure list size is increasing as characters are added
 
-    addQueue(team, Kindred);
+    team.push_back(Kindred);
     CHECK(team.size() != team.size() - 1);
 }
 
 TEST_CASE("Delete from queue") { // Delete character from back of list
-    delQueue(team);
+    team.pop_front();
     CHECK(team.size() != team.size() + 1); // Ensure list size decreases by 1 (size should be 2 at this point)
+
+    std::list<Champion>::iterator it = team.begin();
+    std::advance(it, 0);
+    CHECK(it->name != LeeSin.name); // Ensure Lee Sin is deleted from the team
 }
 
+TEST_CASE("Add to stack") { // Add a character to back of list
+
+}
