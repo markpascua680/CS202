@@ -5,9 +5,13 @@
 */
 #include "Tokenizer.h"
 
-int main() {
+int main(int argc, char* argv[]) {
+    std::vector<TokenAndPosition> tokens; // List tokens, lines, and columns
+    std::ifstream file; // File where tokens are from
+    std::string line; // Lines of the file
 
-    // Take + read input
+    file.open("Text.txt");
 
-    // Print tokens
+    tokens = readLines(file);
+
 }

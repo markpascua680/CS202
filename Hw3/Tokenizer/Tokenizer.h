@@ -7,7 +7,9 @@
 #ifndef TOKENIZER_H
 #define TOKENIZER_H
 
+#include <string>
 #include <iostream>
+#include <sstream>
 #include <fstream>
 #include <iomanip>
 #include <vector>
