@@ -7,11 +7,11 @@
 
 std::vector<std::string> lineToTokens(const std::string& line) {
     std::vector<std::string> s; // Holds tokens
-    std::string temp = line; // Allows reading into the line
-    std::stringstream words(temp);
+    std::string word = line; // Allows reading into the line
+    std::istringstream iss(word);
 
-    while (words >> temp) { // Read to the end of the line, pushing the collected words into string s
-        s.push_back(temp);
+    while (iss >> word) { // Read to the end of the line, pushing the collected words into string s
+        s.push_back(word);
     }
     return s;
 }
@@ -22,8 +22,9 @@ std::vector<TokenAndPosition> readLines(std::istream& is) {
     std::string line; // Line of words
 
     while (std::getline(is, line)) { // Reads line by line
-        for (auto x : lineToTokens(line)) { // 
-            token._token = x;
+        for (auto word : lineToTokens(line)) { // 
+            token._token = word;
+            token._column = getColumn(line, word);
             s.push_back(token);
         }
         
@@ -32,6 +33,15 @@ std::vector<TokenAndPosition> readLines(std::istream& is) {
     return s;
 }
 
-void printTokens(std::ostream& os, const std::vector<TokenAndPosition>& tokens) {
+int getColumn(const std::string& line, const std::string& word) {
+    int col = line.find(word);
+    return col + 1;
+}
 
+void printTokens(std::ostream& os, const std::vector<TokenAndPosition>& tokens) {
+    for (auto x : tokens) {
+        os << "Line " << std::setw(5) << x._line;
+        os << "Column " << std::setw(3) << x._column;
+        os << " " << "\"" << x._token << "\"" << std::endl;
+    }
 }

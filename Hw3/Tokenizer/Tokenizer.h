@@ -24,6 +24,8 @@ std::vector<std::string> lineToTokens(const std::string& line);
 
 std::vector<TokenAndPosition> readLines(std::istream& is);
 
+int getColumn(const std::string& line, const std::string& word);
+
 void printTokens(std::ostream& os, const std::vector<TokenAndPosition>& tokens);
 
 
