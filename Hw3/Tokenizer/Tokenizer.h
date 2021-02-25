@@ -16,8 +16,8 @@
 
 struct TokenAndPosition {
     std::string _token;
-    int _line;
-    unsigned int _column;
+    int _line = 1;
+    unsigned int _column = 0;
 };
 
 std::vector<std::string> lineToTokens(const std::string& line);

@@ -14,4 +14,7 @@ int main(int argc, char* argv[]) {
 
     tokens = readLines(file);
 
+    for (auto x : tokens) {
+        std::cout << "Line: " << x._line << " " << x._token << std::endl;
+    }
 }
