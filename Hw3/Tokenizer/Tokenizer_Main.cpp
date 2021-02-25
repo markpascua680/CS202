@@ -8,12 +8,16 @@
 int main(int argc, char* argv[]) {
     std::vector<TokenAndPosition> tokens; // List tokens, lines, and columns
     std::ifstream file; // File where tokens are from
-    std::string line; // Lines of the file
+    std::string line; // Lines of user input
+    std::getline(std::cin, line); 
 
-    file.open("Text.txt");
+    file.open(line);
 
-    tokens = readLines(file);
-
-    printTokens(std::cout, tokens);
+    if (file.is_open()) {
+        tokens = readLines(file);
+        printTokens(std::cout, tokens);
+    }
+    else
+        std::cout << "File could not be opened" << std::endl;
     
 }

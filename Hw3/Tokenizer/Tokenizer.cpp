@@ -40,7 +40,7 @@ int getColumn(const std::string& line, const std::string& word) {
 
 void printTokens(std::ostream& os, const std::vector<TokenAndPosition>& tokens) {
     for (auto x : tokens) {
-        os << "Line " << std::setw(5) << x._line;
+        os << "Line " << std::setw(5) << x._line << " ";
         os << "Column " << std::setw(3) << x._column;
         os << " " << "\"" << x._token << "\"" << std::endl;
     }
