@@ -12,6 +12,13 @@
 class Money {
 
 	friend std::ostream& operator <<(std::ostream& os, const Money& m);
+	friend bool operator ==(const Money& m1, const Money& m2);
+	friend bool operator !=(const Money& m1, const Money& m2);
+	friend bool operator <(const Money& m1, const Money& m2);
+	friend bool operator <=(const Money& m1, const Money& m2);
+	friend bool operator >(const Money& m1, const Money& m2);
+	friend bool operator >=(const Money& m1, const Money& m2);
+
 	
 public:
 	Money();

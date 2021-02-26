@@ -44,17 +44,17 @@ TEST_CASE("Money ctors and operator<<") {
     os << con7;
     REQUIRE(os.str() == "-$7.08");
 }
-/*
+
 TEST_CASE("Money relational operators") {
     const Money m0;
     const Money m1(1);
 
     REQUIRE((m0 == m0));
     REQUIRE(!(m0 == m1));
-
+    
     REQUIRE(!(m0 != m0));
     REQUIRE((m0 != m1));
-
+    
     REQUIRE(!(m0 < m0));
     REQUIRE((m0 < m1));
     REQUIRE(!(m1 < m0));
@@ -72,7 +72,7 @@ TEST_CASE("Money relational operators") {
     REQUIRE((m1 >= m0));
 }
 
-TEST_CASE("Money arithmetic operators") {
+TEST_CASE("Money arithmetic operators") {/*
     const Money m0;
     Money m1(1);
     Money m2(2);
@@ -118,5 +118,5 @@ TEST_CASE("Money arithmetic operators") {
     m2 = Money(4.2);
     (m2 *= 2.0) = m0;
     REQUIRE(m2 == m0);
+    */
 }
-*/

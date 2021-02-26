@@ -25,6 +25,43 @@ std::ostream& operator <<(std::ostream& os, const Money& m) {
     }
 }
 
+bool operator ==(const Money& m1, const Money& m2) {
+    if (m1._dollars == m2._dollars && m1._cents == m2._cents)
+        return true;
+    return false;
+}
+
+bool operator !=(const Money& m1, const Money& m2) {
+    if (m1._dollars != m2._dollars || m1._cents != m2._cents)
+        return true;
+    return false;
+}
+
+bool operator <(const Money& m1, const Money& m2) {
+    if (m1._dollars < m2._dollars || m1._cents < m2._cents)
+        return true;
+    return false;
+}
+
+bool operator <=(const Money& m1, const Money& m2) {
+    if (m1._dollars <= m2._dollars && m1._cents <= m2._cents)
+        return true;
+    return false;
+}
+
+bool operator >(const Money& m1, const Money& m2) {
+    if (m1._dollars > m2._dollars || m1._cents > m2._cents)
+        return true;
+    return false;
+}
+
+bool operator >=(const Money& m1, const Money& m2) {
+    if (m1._dollars >= m2._dollars && m1._cents >= m2._cents)
+        return true;
+    return false;
+}
+
+
 Money::Money() {
     _dollars = 0;
     _cents = 0;
