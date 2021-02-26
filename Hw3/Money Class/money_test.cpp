@@ -72,7 +72,7 @@ TEST_CASE("Money relational operators") {
     REQUIRE((m1 >= m0));
 }
 
-TEST_CASE("Money arithmetic operators") {/*
+TEST_CASE("Money arithmetic operators") {
     const Money m0;
     Money m1(1);
     Money m2(2);
@@ -81,7 +81,7 @@ TEST_CASE("Money arithmetic operators") {/*
 
     m1 -= mc1;
     REQUIRE(m1 == m0);
-
+    /*
     m1 += mc1;
     REQUIRE(m1 == mc1);
 
@@ -104,10 +104,10 @@ TEST_CASE("Money arithmetic operators") {/*
     Money m12;
     m12 = mc1;
     REQUIRE(m12 == mc1);
-
+    */
     (m2 -= mc1) = m0;
     REQUIRE(m2 == m0);
-
+    /*
     (m2 += mc1) = m0;
     REQUIRE(m2 == m0);
 

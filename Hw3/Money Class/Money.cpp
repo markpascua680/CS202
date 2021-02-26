@@ -61,6 +61,20 @@ bool operator >=(const Money& m1, const Money& m2) {
     return false;
 }
 
+Money & Money::operator-=(const Money& m) {
+    _dollars -= m._dollars;
+
+    if (_cents < m._cents) { // Carries over a dollar if cents being subtracted from is smaller 
+        _dollars -= 1;
+        _cents += 100;
+        _cents -= m._cents;
+        return *this;
+    }
+    else
+        _cents -= m._cents;
+    return *this;
+}
+
 
 Money::Money() {
     _dollars = 0;
