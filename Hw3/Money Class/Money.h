@@ -18,8 +18,6 @@ class Money {
 	friend bool operator <=(const Money& m1, const Money& m2);
 	friend bool operator >(const Money& m1, const Money& m2);
 	friend bool operator >=(const Money& m1, const Money& m2);
-
-	friend Money operator +(const Money& m1, const Money& m2);
 	
 public:
 	Money();
@@ -28,7 +26,10 @@ public:
 	Money(int cents);
 	~Money();
 
-	Money &operator-=(const Money& m);
+	Money& operator+=(const Money& m);
+	Money& operator-=(const Money& m);
+	Money& operator*=(const double& num);
+	Money& operator/=(const double& num);
 
 	int getDollars() {
 		return _dollars;

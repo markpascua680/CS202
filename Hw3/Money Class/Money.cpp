@@ -61,7 +61,20 @@ bool operator >=(const Money& m1, const Money& m2) {
     return false;
 }
 
-Money & Money::operator-=(const Money& m) {
+Money& Money::operator+=(const Money& m) {
+    _dollars += m._dollars;
+
+    if (_cents + m._cents > 100) { // Adds a dollar if cents add up over 100
+        _dollars++;
+        _cents = 100 - (_cents + m._cents);
+        return *this;
+    }
+    else
+        _cents += m._cents;
+    return *this;
+}
+
+Money& Money::operator-=(const Money& m) {
     _dollars -= m._dollars;
 
     if (_cents < m._cents) { // Carries over a dollar if cents being subtracted from is smaller 
@@ -74,6 +87,25 @@ Money & Money::operator-=(const Money& m) {
         _cents -= m._cents;
     return *this;
 }
+
+Money& Money::operator*=(const double& num) {
+    double product = _dollars + (double(_cents) / 100); // Makes a double out of money object to do multiplication
+    product *= num;
+
+    _dollars = int(product);
+    _cents = round((product - _dollars) * 100); // Get the decimal alone, then * 100 to make it an int, then round
+    return *this;
+}
+
+Money& Money::operator/=(const double& num) {
+    double quotient = _dollars + (double(_cents) / 100); // Makes a double out of money object to do division
+    quotient /= num;
+
+    _dollars = int(_dollars);
+    _cents = round((quotient - _dollars) * 100); // Get the decimal alone, then * 100 to make it an int, then round
+    return *this;
+}
+
 
 
 Money::Money() {
