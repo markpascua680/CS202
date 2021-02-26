@@ -12,12 +12,20 @@
 class Money {
 
 	friend std::ostream& operator <<(std::ostream& os, const Money& m);
+
 	friend bool operator ==(const Money& m1, const Money& m2);
 	friend bool operator !=(const Money& m1, const Money& m2);
 	friend bool operator <(const Money& m1, const Money& m2);
 	friend bool operator <=(const Money& m1, const Money& m2);
 	friend bool operator >(const Money& m1, const Money& m2);
 	friend bool operator >=(const Money& m1, const Money& m2);
+
+	friend Money operator+(const Money& m1, const Money& m2);
+	friend Money operator-(const Money& m1, const Money& m2);
+	friend Money operator*(const Money& m1, const double& num);
+	friend Money operator*(const double& num, const Money& m1);
+	friend Money operator/(const Money& m1, const double& num);
+	friend Money operator/(const double& num, const Money& m1);
 	
 public:
 	Money();
@@ -30,14 +38,7 @@ public:
 	Money& operator-=(const Money& m);
 	Money& operator*=(const double& num);
 	Money& operator/=(const double& num);
-
-	int getDollars() {
-		return _dollars;
-	}
-
-	int getCents() {
-		return _cents;
-	}
+	Money& operator=(const Money& m1);
 
 private:
 	int _dollars;

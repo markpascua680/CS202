@@ -106,6 +106,68 @@ Money& Money::operator/=(const double& num) {
     return *this;
 }
 
+Money operator+(const Money& m1, const Money& m2) {
+    Money sum;
+    sum._dollars = m1._dollars + m2._dollars;
+
+    if (m1._cents + m2._cents > 100) { // Adds a dollar if cents add up over 100
+        sum._dollars++;
+        sum._cents = 100 - (m1._cents + m2._cents);
+        return sum;
+    }
+    else
+        sum._cents = m1._cents + m2._cents;
+    return sum;
+}
+
+Money operator-(const Money& m1, const Money& m2) {
+    Money difference;
+    difference._dollars = m1._dollars - m2._dollars;
+
+    if (m1._cents < m2._cents) { // Carries over a dollar if cents being subtracted from is smaller 
+        difference._dollars -= 1;
+        difference._cents = m1._cents + 100;
+        difference._cents = m1._cents - m2._cents;
+        return difference;
+    }
+    else
+        difference._cents = m1._cents - m2._cents;
+    return difference;
+}
+
+Money operator*(const Money& m1, const double& num) {
+    Money product = m1;
+    product *= num;
+
+    return product;
+}
+
+Money operator*(const double& num, const Money& m1) {
+    Money product = m1;
+    product *= num; 
+
+    return product;
+}
+
+Money operator/(const Money& m1, const double& num) {
+    Money quotient = m1;
+    quotient /= num;
+
+    return quotient;
+}
+
+Money operator/(const double& num, const Money& m1) {
+    Money quotient = m1;
+    quotient /= num;
+
+    return quotient;
+}
+
+Money& Money::operator=(const Money& m1) {
+    _dollars = m1._dollars;
+    _cents = m1._cents;
+    return *this;
+}
 
 
 Money::Money() {
