@@ -82,7 +82,22 @@ CheckeredBox::CheckeredBox(const int& w, const int& h) : Box(w, h) {
 }
 
 void CheckeredBox::print(std::ostream& os) {
+	for (int h = 0; h < getHeight(); h++) {
 
+		for (int w = 0; w < getWidth(); w++) {
+			if (h % 2 == 0 && w % 2 == 0) { // Every odd row and column prints a character where the row + column intersect
+				os << '#';
+				continue;
+			}
+			if (h % 2 == 1 && w % 2 == 1) { // Every even row and column prints a character where the row + column intersect
+				os << '#';
+				continue;
+			}
+			os << ' ';
+		}
+
+		os << endl;
+	}
 }
 
 std::string CheckeredBox::type() {
