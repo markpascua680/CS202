@@ -33,11 +33,9 @@ void Box::setHeight(const int& h) {
 // Filled Box Definitions -----------------------
 
 FilledBox::FilledBox() : Box() {
-	cout << "Constructed filled box with width " << getWidth() << " and height " << getHeight() << endl;
 }
 
 FilledBox::FilledBox(const int& w, const int& h) : Box(w, h) {
-	cout << "Constructed filled box with width " << getWidth() << " and height " << getHeight() << endl;
 }
 
 void FilledBox::print(std::ostream& os) {
@@ -55,9 +53,21 @@ std::string FilledBox::type() {
 }
 
 // Hollow Box Definitions -----------------------
+HollowBox::HollowBox() : Box() {
+}
+
+HollowBox::HollowBox(const int& w, const int& h) : Box(w, h) {
+}
 
 void HollowBox::print(std::ostream& os) {
-
+	for (int h = 0; h < getHeight(); h++) {
+		if (h == 0 || h == getHeight() - 1) { // Prints Top and Bottom Sides
+			os << std::string(getWidth(), '#');
+		}
+		else
+			os << '#' << std::string(getWidth() - 2, ' ') << '#';
+		os << endl;
+	}
 }
 
 std::string HollowBox::type() {
@@ -65,6 +75,11 @@ std::string HollowBox::type() {
 }
 
 // Checkered Box Definitions -----------------------
+CheckeredBox::CheckeredBox() : Box() {
+}
+
+CheckeredBox::CheckeredBox(const int& w, const int& h) : Box(w, h) {
+}
 
 void CheckeredBox::print(std::ostream& os) {
 

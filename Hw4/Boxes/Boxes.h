@@ -39,12 +39,18 @@ public:
 
 class HollowBox : public Box {
 public:
+	HollowBox();
+	HollowBox(const int& w, const int& h);
+
 	void print(std::ostream& os) override;
 	std::string type() override;
 };
 
 class CheckeredBox : public Box {
 public:
+	CheckeredBox();
+	CheckeredBox(const int& w, const int& h);
+
 	void print(std::ostream& os) override;
 	std::string type() override;
 };
