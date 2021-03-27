@@ -1,14 +1,18 @@
 #include "Boxes.h"
 
 int main() {
-	FilledBox b;
+	FilledBox f;
+	HollowBox h;
+	CheckeredBox c;
+	cout << "Filled" << endl;
+	cout << "Width: " << f.getWidth() << " Height: " << f.getHeight() << endl;
 
-	cout << "Width: " << b.getWidth() << " Height: " << b.getHeight() << endl;
+	f.setWidth(6);
+	f.setHeight(9);
 
-	b.setWidth(6);
-	b.setHeight(9);
+	cout << f;
 
-	cout << "Width: " << b.getWidth() << " Height: " << b.getHeight() << endl;
+
 
 	return 0;
 }

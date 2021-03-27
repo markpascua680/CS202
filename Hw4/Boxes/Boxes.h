@@ -7,6 +7,8 @@ using std::endl;
 
 class Box
 {
+	friend std::ostream& operator<<(std::ostream& os, Box& b);
+
 public:
 	Box();
 	Box(const int& w, const int& h);
@@ -26,24 +28,25 @@ private:
 	int _width;
 };
 
-std::ostream operator<<(std::ostream& os, const Box& b);
-
 class FilledBox : public Box {
 public:
-	void print(std::ostream& os);
-	std::string type();
+	FilledBox();
+	FilledBox(const int& w, const int& h);
+
+	void print(std::ostream& os) override;
+	std::string type() override;
 };
 
 class HollowBox : public Box {
 public:
-	void print(std::ostream& os);
-	std::string type();
+	void print(std::ostream& os) override;
+	std::string type() override;
 };
 
 class CheckeredBox : public Box {
 public:
-	void print(std::ostream& os);
-	std::string type();
+	void print(std::ostream& os) override;
+	std::string type() override;
 };
 
 #endif // !BOXES_H
