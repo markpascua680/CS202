@@ -1,6 +1,7 @@
 #ifndef BOXES_H
 #define BOXES_H
 #include <iostream>
+#include <memory>
 
 using std::cout;
 using std::endl;
@@ -8,7 +9,6 @@ using std::endl;
 class Box
 {
 	friend std::ostream& operator<<(std::ostream& os, Box& b);
-
 public:
 	Box();
 	Box(const int& w, const int& h);
@@ -54,5 +54,7 @@ public:
 	void print(std::ostream& os) override;
 	std::string type() override;
 };
+
+std::unique_ptr<Box> boxFactory(char c, int w, int h);
 
 #endif // !BOXES_H

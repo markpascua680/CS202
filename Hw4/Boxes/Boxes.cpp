@@ -1,5 +1,30 @@
 #include "Boxes.h"
 
+std::ostream& operator<<(std::ostream& os, Box& b) {
+	b.print(os);
+	return os;
+}
+
+std::unique_ptr<Box> boxFactory(char c, int w, int h) {
+	std::unique_ptr<Box> b;
+	switch (c) {
+	case 'f':
+		b = std::make_unique<FilledBox>(w, h);
+		return b;
+	case 'h':
+		b = std::make_unique<HollowBox>(w, h);
+		return b;
+	case 'c':
+		b = std::make_unique<CheckeredBox>(w, h);
+		return b;
+	default:
+		cout << "Invalid box type entered" << endl;
+		return 0;
+	}
+}
+
+// Box Definitions -----------------------
+
 Box::Box() {
 	_width = 1;
 	_height = 1;
@@ -102,9 +127,4 @@ void CheckeredBox::print(std::ostream& os) {
 
 std::string CheckeredBox::type() {
 	return "Checkered";
-}
-
-std::ostream& operator<<(std::ostream& os, Box& b) {
-	b.print(os);
-	return os;
 }
