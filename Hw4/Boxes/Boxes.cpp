@@ -1,6 +1,6 @@
 #include "Boxes.h"
 
-std::ostream& operator<<(std::ostream& os, Box& b) {
+std::ostream& operator<<(std::ostream& os, const Box& b) {
 	b.print(os);
 	return os;
 }
@@ -18,8 +18,7 @@ std::unique_ptr<Box> boxFactory(char c, int w, int h) {
 		b = std::make_unique<CheckeredBox>(w, h);
 		return b;
 	default:
-		cout << "Invalid box type entered" << endl;
-		return 0;
+		throw std::runtime_error("Invalid box parameters entered");
 	}
 }
 
@@ -33,10 +32,6 @@ Box::Box() {
 Box::Box(const int& w, const int& h) {
 	_width = w;
 	_height = h;
-}
-
-Box::~Box() {
-
 }
 
 int Box::getWidth() const {
@@ -63,17 +58,17 @@ FilledBox::FilledBox() : Box() {
 FilledBox::FilledBox(const int& w, const int& h) : Box(w, h) {
 }
 
-void FilledBox::print(std::ostream& os) {
+void FilledBox::print(std::ostream& os) const {
 	int w = getWidth();
 	int h = getHeight();
 
 	for (int row = 0; row < h; row++) {
-		os << std::string(w, '#');
+		os << std::string(w, 'x');
 		os << endl;
 	}
 }
 
-std::string FilledBox::type() {
+std::string FilledBox::type() const {
 	return "Filled";
 }
 
@@ -84,18 +79,18 @@ HollowBox::HollowBox() : Box() {
 HollowBox::HollowBox(const int& w, const int& h) : Box(w, h) {
 }
 
-void HollowBox::print(std::ostream& os) {
+void HollowBox::print(std::ostream& os) const {
 	for (int h = 0; h < getHeight(); h++) {
 		if (h == 0 || h == getHeight() - 1) { // Prints Top and Bottom Sides
-			os << std::string(getWidth(), '#');
+			os << std::string(getWidth(), 'x');
 		}
 		else
-			os << '#' << std::string(getWidth() - 2, ' ') << '#';
+			os << 'x' << std::string(getWidth() - 2, ' ') << 'x';
 		os << endl;
 	}
 }
 
-std::string HollowBox::type() {
+std::string HollowBox::type() const {
 	return "Hollow";
 }
 
@@ -106,16 +101,16 @@ CheckeredBox::CheckeredBox() : Box() {
 CheckeredBox::CheckeredBox(const int& w, const int& h) : Box(w, h) {
 }
 
-void CheckeredBox::print(std::ostream& os) {
+void CheckeredBox::print(std::ostream& os) const {
 	for (int h = 0; h < getHeight(); h++) {
 
 		for (int w = 0; w < getWidth(); w++) {
 			if (h % 2 == 0 && w % 2 == 0) { // Every odd row and column prints a character where the row + column intersect
-				os << '#';
+				os << 'x';
 				continue;
 			}
 			if (h % 2 == 1 && w % 2 == 1) { // Every even row and column prints a character where the row + column intersect
-				os << '#';
+				os << 'x';
 				continue;
 			}
 			os << ' ';
@@ -125,6 +120,6 @@ void CheckeredBox::print(std::ostream& os) {
 	}
 }
 
-std::string CheckeredBox::type() {
+std::string CheckeredBox::type() const {
 	return "Checkered";
 }
