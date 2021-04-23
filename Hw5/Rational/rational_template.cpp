@@ -7,8 +7,8 @@
 //
 
 // Includes for code to be tested
-#include "myreadwrite.h"   // For function templates myRead and myWrite
-#include "myreadwrite.h"   // Double inclusion test
+#include "rational.h"      // For Rational class template and opertaors
+#include "rational.h"      // Double inclusion test
 
 // Includes for testing package & code common to all test programs
 #include <iostream>     // for std::cout, std::endl, std::cin
@@ -463,48 +463,6 @@ bool operator<(const Counter& a,
 //     Pass/fail status of tests have been registered with t.
 //     Appropriate messages have been printed to cout.
 // Does not throw (No-Throw Guarantee)
-void test_myReadWrite(Tester& t)
-{
-    std::cout << "Test Suite: function templates myRead and myWrite" << std::endl;
-
-    struct UncopyableData {
-        char a;
-        UncopyableData(const UncopyableData&) = delete;
-        UncopyableData() = default;
-    };
-
-    std::cout << "Test Suite: Using myWrite to write some things to \"data.dat\"" << std::endl;
-    std::ofstream ofile("data.dat");
-    std::array<float, 3> w = { 1.1,2.2,3.3 };
-    double x = 13.3;
-    const int y = 5;
-    UncopyableData z{ 'a' };
-
-    myWrite(ofile, w);
-    myWrite(ofile, x);
-    myWrite(ofile, y);
-    myWrite(ofile, z);
-    ofile.close();
-
-    std::cout << "Test Suite: Using myRead to read those things back from \"data.dat\"" << std::endl;
-    std::ifstream ifile("data.dat");
-    std::array<float, 3> readw;
-    double readx;
-    int ready[2] = { 999,2 };
-    UncopyableData readz;
-
-    myRead(ifile, readw);
-    myRead(ifile, readx);
-    myRead(ifile, ready[0]);
-    myRead(ifile, readz);
-    ifile.close();
-    // Check correctness
-    t.test(w == readw, "An array<float,3> is written and read correctly");
-    t.test(x == readx, "A double is written and read correctly");
-    t.test(y == ready[0], "A const int is written and read correctly");
-    t.test(2 == ready[1], "Reading that int did not overflow into the next element of an array");
-    t.test(z.a == readz.a, "An uncopyable class is written and read correctly");
-}
 
 // test_RAIIPtr
 // Test suite for function template printVector
@@ -513,6 +471,38 @@ void test_myReadWrite(Tester& t)
 //     Pass/fail status of tests have been registered with t.
 //     Appropriate messages have been printed to cout.
 // Does not throw (No-Throw Guarantee)
+void test_Rational(Tester& t)
+{
+    std::cout << "Test Suite: class template Rational" << std::endl;
+    Rational<short> zero;
+    t.test(true, "Default constructor exists.");
+    std::ostringstream oss;
+    oss << zero;
+    t.test(true, "ostream << operator exists.");
+    t.test(oss.str() == "0", "Default constructor yeilds 0");
+#define TEST(x) t.test(x,#x)
+    TEST(Rational<int>(1, 2) + Rational<int>(1, 3) == Rational<int>(5, 6));
+    TEST(Rational<int>(1, 2) - Rational<int>(1, 3) == Rational<int>(1, 6));
+    TEST(Rational<int>(1, 2) * Rational<int>(1, 3) == Rational<int>(1, 6));
+    TEST(Rational<int>(1, 2) / Rational<int>(1, 3) == Rational<int>(3, 2));
+    TEST(Rational<long long>(1, 2) < Rational<long long>(5, 8));
+    TEST(Rational<long long>(3, 2) > Rational<long long>(5, 8));
+    TEST(Rational<long long>(1, 2) <= Rational<long long>(1, 2));
+    TEST(Rational<long long>(1, 2) >= Rational<long long>(1, 2));
+    TEST(Rational<int>(7, 8) != Rational<int>(9, 10));
+    TEST(Rational<int>(-1, 1) == -Rational<int>(1));
+    Rational<int> r(1, 2);
+    using RI = Rational<int>;
+    r -= RI(1, 3);
+    t.test(r == RI(1, 6), "After 1/2 -= 1/3 you get 1/6");
+    r += RI(1, 6);
+    t.test(r == RI(1, 3), "After that += 1/6 you get 1/3");
+    r /= RI(2, 3);
+    t.test(r == RI(1, 2), "After that /= 2/3 you get 1/2");
+    r *= RI(8);
+    t.test(r == RI(4), "After that *= 8 you get 4");
+
+}
 
 // test_templates
 // Test suite for template homework
@@ -526,7 +516,7 @@ void test_templates(Tester& t)
 {
     // Do all the test suites
     std::cout << "TEST SUITES FOR Templates homework" << std::endl;
-    test_myReadWrite(t);
+    test_Rational(t);
 }
 
 

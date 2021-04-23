@@ -20,8 +20,8 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
-    <ProjectGuid>{C5272A4A-6866-49C8-9D50-8E688F9D1023}</ProjectGuid>
-    <RootNamespace>TemplateReadWrite</RootNamespace>
+    <ProjectGuid>{A3F207E8-BFBB-4BFA-9C81-E10EF7D1822A}</ProjectGuid>
+    <RootNamespace>Rational</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -138,10 +138,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="template.cpp" />
+    <ClCompile Include="rational.cpp" />
+    <ClCompile Include="rational_template.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="myreadwrite.h" />
+    <ClInclude Include="rational.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
