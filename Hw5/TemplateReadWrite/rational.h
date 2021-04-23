@@ -6,7 +6,19 @@
 template <typename T>
 class Rational {
     friend std::ostream& operator<<(std::ostream&, const Rational<T>& rhs);
-    friend Rational<T> operator+(const Rational<T>& lhs, const Rational<T>& rhs);
+
+    template <typename U>
+    friend Rational<U> operator+(const Rational<U>& lhs, const Rational<U>& rhs);
+
+    template <typename U>
+    friend Rational<U> operator-(const Rational<U>& lhs, const Rational<U>& rhs);
+
+    template <typename U>
+    friend Rational<U> operator*(const Rational<U>& lhs, const Rational<U>& rhs);
+
+    template <typename U>
+    friend Rational<U> operator/(const Rational<U>& lhs, const Rational<U>& rhs);
+
 public:
     Rational<T>() : _numerator(0), _denominator(0) {}
         template <typename U>
