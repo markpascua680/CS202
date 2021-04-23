@@ -5,14 +5,22 @@
 
 template <typename T>
 class Rational {
-    friend std::ostream& operator<<(std::ostream&, const Rational& rhs);
-    friend Rational operator+(const Rational& lhs, const Rational& rhs);
+    friend std::ostream& operator<<(std::ostream&, const Rational<T>& rhs);
+    friend Rational<T> operator+(const Rational<T>& lhs, const Rational<T>& rhs);
 public:
-    template <typename U>
+    Rational<T>() : _numerator(0), _denominator(0) {}
+        template <typename U>
+    Rational<T>(U num) : _numerator(num) {
+    }
+        template <typename U>
     Rational<T>(U num, U den) : _numerator(num), _denominator(den) {
     }
 
-    Rational& operator+=(const Rational& rhs);
+    Rational<T>& operator+=(const Rational<T>& rhs);
+    Rational<T>& operator-=(const Rational<T>& rhs);
+    Rational<T>& operator*=(const Rational<T>& rhs);
+    Rational<T>& operator/=(const Rational<T>& rhs);
+    bool operator==(const Rational<T>& rhs);
 private:
     int _numerator;
     int _denominator;
