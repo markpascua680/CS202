@@ -17,13 +17,60 @@ Rational<T> operator-(const Rational<T>& lhs, const Rational<T>& rhs) {
 }
 
 template <typename T>
+Rational<T> operator-(const Rational<T>& rhs) {
+    return Rational<T>(-rhs._numerator, rhs._denominator);
+}
+
+template <typename T>
 Rational<T> operator*(const Rational<T>& lhs, const Rational<T>& rhs) {
     return Rational<T>(lhs._numerator * rhs._numerator, lhs._denominator * rhs._denominator);
 }
 
 template <typename T>
 Rational<T> operator/(const Rational<T>& lhs, const Rational<T>& rhs) {
-    return Rational<T>(lhs._numerator* rhs._denominator, lhs._denominator* rhs._numerator);
+    return Rational<T>(lhs._numerator * rhs._denominator, lhs._denominator * rhs._numerator);
+}
+
+template <typename T>
+bool operator<(const Rational<T>& lhs, const Rational<T>& rhs) {
+    if (lhs._numerator / lhs._denominator < rhs._numerator / rhs._denominator)
+        return true;
+    return false;
+}
+
+template <typename T>
+bool operator>(const Rational<T>& lhs, const Rational<T>& rhs) {
+    if (lhs._numerator / lhs._denominator > rhs._numerator / rhs._denominator)
+        return true;
+    return false;
+}
+
+template <typename T>
+bool operator<=(const Rational<T>& lhs, const Rational<T>& rhs) {
+    if (lhs._numerator / lhs._denominator <= rhs._numerator / rhs._denominator)
+        return true;
+    return false;
+}
+
+template <typename T>
+bool operator>=(const Rational<T>& lhs, const Rational<T>& rhs) {
+    if (lhs._numerator / lhs._denominator >= rhs._numerator / rhs._denominator)
+        return true;
+    return false;
+}
+
+template <typename T>
+bool operator!=(const Rational<T>& lhs, const Rational<T>& rhs) {
+    if (lhs._numerator / lhs._denominator != rhs._numerator / rhs._denominator)
+        return true;
+    return false;
+}
+
+template <typename T>
+bool operator==(const Rational<T>& lhs, const Rational<T>& rhs) {
+    if (lhs._numerator == rhs._numerator && lhs._denominator == rhs._denominator)
+        return true;
+    return false;
 }
 
 template <typename T>
@@ -54,9 +101,4 @@ Rational<T>& Rational<T>::operator/=(const Rational<T>& rhs) {
     return *this;
 }
 
-template <typename T>
-bool Rational<T>::operator==(const Rational<T>& rhs) {
-    if (_numerator == rhs._numerator && _denominator == rhs._denominator)
-        return true;
-    return false;
-}
+
