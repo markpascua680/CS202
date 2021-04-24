@@ -1,4 +1,5 @@
 #include <iostream>
+#include "Time.h"
 
 int fib(const int& n) { // Recursion
 	
@@ -42,9 +43,11 @@ int ack(const int& m, const int& n) {
 	if (m > 0 && n > 0) {
 		return ack(m - 1, ack(m, n - 1));
 	}
+	return 0;
 }
 
 int main() {
+	StopWatch timer;
 
 	std::cout << "FIBONACCI SEQUENCE USING RECURSION: " << std::endl;
 	std::cout << fib(12) << std::endl;
@@ -53,7 +56,18 @@ int main() {
 	std::cout << fib_loop(12) << std::endl;
 
 	std::cout << "ACKERMANN'S FUNCTION: " << std::endl;
-	std::cout << ack(3, 4);
+
+	for (int m = 0; m < 5; m++) {
+		std::cout << "\nM = " << m << std::endl;
+		std::cout << "RESULT: ";
+
+		std::cout << ack(m, 0) << std::endl;
+		timer.Start();
+		ack(m, 0);
+		timer.Stop(timer);
+		std::cout << std::endl;
+	}
+
 
 	return 0;
 }
