@@ -30,6 +30,20 @@ int fib_loop(const int& n) {
 		return 0;
 }
 
+int ack(const int& m, const int& n) {
+	if (m == 0) {
+		return n + 1;
+	}
+	
+	if (m > 0 && n == 0) {
+		return ack(m - 1, 1);
+	}
+
+	if (m > 0 && n > 0) {
+		return ack(m - 1, ack(m, n - 1));
+	}
+}
+
 int main() {
 
 	std::cout << "FIBONACCI SEQUENCE USING RECURSION: " << std::endl;
@@ -37,6 +51,9 @@ int main() {
 
 	std::cout << "FIBONACCI SEQUENCE WITHOUT USING RECURSION: " << std::endl;
 	std::cout << fib_loop(12) << std::endl;
+
+	std::cout << "ACKERMANN'S FUNCTION: " << std::endl;
+	std::cout << ack(3, 4);
 
 	return 0;
 }
