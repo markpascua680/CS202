@@ -20,8 +20,8 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
-    <ProjectGuid>{A3F207E8-BFBB-4BFA-9C81-E10EF7D1822A}</ProjectGuid>
-    <RootNamespace>Rational</RootNamespace>
+    <ProjectGuid>{35F417DB-4501-46F1-B66D-AC7EDEA2E452}</ProjectGuid>
+    <RootNamespace>Recursion</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -138,10 +138,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="rational_template.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="rational.h" />
+    <ClCompile Include="Recursion.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
