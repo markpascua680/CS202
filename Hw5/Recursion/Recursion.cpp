@@ -1,18 +1,19 @@
 #include <iostream>
 
-void fib(const int& n) {
+int fib(const int& n) {
 
 	if (n == 0)
-		std::cout << 0 << std::endl;
+		return 0;
 	else if (n == 1)
-		std::cout << 1 << std::endl;
+		return 1;
 	else if (n > 1) {
-
+		return fib(n - 1) + fib(n - 2);
 	}
-
 }
 
 int main() {
+
+	std::cout << fib(12) << std::endl;
 
 	return 0;
 }
